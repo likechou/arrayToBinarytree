@@ -9,29 +9,34 @@
 <script type="text/javascript">
 
 	function tree(){
-	// var insertNode(node,newnode)
+	// var insertNode=funtion(node,newnode)
 	// {
 	// 	if(newnode.key<node.key)
 	// 		{
-	// 			if(node.left=null)
+	// 			if(node.left==null)
 	// 				node.left=newnode;
 	// 			else(insertNode(node.left,newnode))
 	// 		}
 	// 	else if(newnode.key>node.key)
 	// 	{
-	// 		if(node.right=null)
-	// 			node,right=newnode;
+	// 		if(node.right==null)
+	// 			node.right=newnode;
 	// 		else
-	// 			insertNode(node.left,newnode);
+	// 			insertNode(node.right,newnode);
 	// 	}
 	// }
+	var root=null;
 	var node =function(key)
 	{
 		this.key=key;
 		this.left=null;
 		this.right=null;
 	};
-	this.insert=function insertnode(array,targrtnode,begin,end)
+	this.insert=function(array,begin,end)
+	{
+		insertnode(array,root,begin,end);
+	}
+	function insertnode(array,targrtnode,begin,end)
 	{
 		if(begin>end)
 			return;
@@ -47,9 +52,8 @@
 	};
 
 }
-var root;
 var a = [1,2,3,4,5,6,7,8];
 var tree1 =new tree();
-tree1.insert(a,root,0,7);
+tree1.insert(a,0,7);
 </script>
 </html>

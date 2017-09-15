@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function banaryTree(){
+	
+	var node =function(key)
+	{
+		this.key=key;
+		this.left=null;
+		this.right=null;
+	};
+	var root=null;
+	var insertNode=function(node,newnode)
+	{
+		if(newnode.key<node.key)
+			{
+				if(node.left===null)
+					node.left=newnode;
+				else(insertNode(node.left,newnode))
+			}
+		else if(newnode.key>node.key)
+		{
+			if(node.right===null)
+				node.right=newnode;
+			else
+				insertNode(node.right,newnode);
+		}
+	};
+	var inOrderNode=function(node,callback){
+		if(node!==null)
+			{
+				inOrderNode(node.left,callback);
+				callback(node.key);
+				inOrderNode(node.right,callback);
+		}
+	};
+	this.insert=function(key){
+		var newnode=new node(key);
+		console.log(key);
+		if(root===null)
+			root=newnode;
+		else
+			{
+				insertNode(root,newnode);
+			}
+	}
+	this.inOrder=function(callback)//中序遍历
+	{
+		inOrderNode(root,callback);
+	};
+}
+var array=[8,5,15,4,2,10,16,3,20];
+var tree=new banaryTree();
+array.forEach(function(key)
+{
+	tree.insert(key);
+});
+console.log("--------------------");
+var callback = function(key){
+		console.log(key);
+	};
+tree.inOrder(callback); 
+</script>
+</html>
